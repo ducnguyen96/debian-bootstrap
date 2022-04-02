@@ -1,0 +1,7 @@
+zsh/plugins
+
+dmenu-5.1
+dwm-6.3
+dwmblocks
+
+!suckless/*
