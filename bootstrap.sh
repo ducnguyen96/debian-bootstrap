@@ -199,6 +199,24 @@ while getopts ":i:u:h" o; do case "${o}" in
 		echo "Done upate dwmblocks"
 		break
 		;;
+	"all")
+		installCurl
+		installWget
+		installGit
+		installBuildTools
+		installZsh
+		installGoogleChrome
+		installVSCode
+		installIBus
+		installFnm
+		installFlameshot
+		installDocker
+		installDockerCompose
+		installSuckless
+		installLatex
+		echo "Done"
+		break
+		;;
 	*)
 		echo "Sorry, Haven't support it yet!"
 		;;
