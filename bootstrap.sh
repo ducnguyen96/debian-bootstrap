@@ -48,6 +48,8 @@ installZsh() {
 
 installGit() {
 	sudo apt install git -y
+	git config --global user.name "ducnguyen96"
+	git config --global user.email "levinguyen.dl@gmail.com"
 }
 
 installCurl() {
