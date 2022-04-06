@@ -39,11 +39,12 @@ installIBus() {
 }
 
 installZsh() {
-	sudo apt install zsh - y
+	sudo apt install zsh
 	touch ~/.zshenv
 	mkdir -p ~/config/zsh
 	echo "ZDOTDIR=$HOME/config/zsh" >~/.zshenv
 	chsh -s $(which zsh)
+	cp -r zsh $HOME/config
 }
 
 installGit() {
@@ -149,7 +150,7 @@ Type=XSession" | sudo tee --append /usr/share/xsessions/dwm.desktop
 
 while getopts ":i:u:h" o; do case "${o}" in
 	h) printf "Optional arguments for custom use:
-	-i: install something (support: chrome, vscode, latex, ibus, zsh, git, curl, buildtools, fnm, wget, suckless, flameshot, docker, docker-compose )
+	-i: install something (support: chrome, vscode, latex, ibus, zsh, git, curl, buildtools, fnm, wget, suckless, flameshot, docker, docker-compose, all )
 	-u: update something (support: dwm, dwmblock, dmenu)
 	-h: Show this message\\n" && exit 1 ;;
 	i) case ${OPTARG} in "chrome")
@@ -187,18 +188,14 @@ while getopts ":i:u:h" o; do case "${o}" in
 		echo "Done install docker-compose"
 		break
 		;;
-	*)
-		echo "Sorry, Haven't support it yet!"
-		;;
-	esac ;;
-	u) case ${OPTARG} in "dwm")
-		updateDwm
-		echo "Done update dwm"
+	"zsh")
+		installZsh
+		echo "Done install Zsh"
 		break
 		;;
-	"dwmblocks")
-		updateDwmblock
-		echo "Done upate dwmblocks"
+	"suckless")
+		installSuckless
+		echo "Done install suckless"
 		break
 		;;
 	"all")
@@ -217,6 +214,20 @@ while getopts ":i:u:h" o; do case "${o}" in
 		installSuckless
 		installLatex
 		echo "Done"
+		break
+		;;
+	*)
+		echo "Sorry, Haven't support it yet!"
+		;;
+	esac ;;
+	u) case ${OPTARG} in "dwm")
+		updateDwm
+		echo "Done update dwm"
+		break
+		;;
+	"dwmblocks")
+		updateDwmblock
+		echo "Done upate dwmblocks"
 		break
 		;;
 	*)
