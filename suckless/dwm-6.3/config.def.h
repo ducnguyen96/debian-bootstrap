@@ -62,6 +62,9 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "xfce4-terminal", NULL };
 static const char *browsercmd[] = {"google-chrome-stable", NULL};
 static const char *flameshot[] = {"flameshot", "gui", NULL};
+static const char *mutecmd[] = { "pactl", "set-sink-mute", "0", "toggle", NULL };
+static const char *volupcmd[] = { "amixer", "-q", "sset", "Master" ,"5%+", NULL };
+static const char *voldowncmd[] = { "amixer", "-q", "sset", "Master" ,"5%-", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -69,6 +72,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,			            XK_Return, spawn,          {.v = termcmd } },
+	{ 0, 														XF86XK_AudioMute, spawn, {.v = mutecmd } },
+	{ 0, 														XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd } },
+	{ 0, 														XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd } },
 	{ MODKEY|ShiftMask,             XK_f,      fullscreen,     {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
