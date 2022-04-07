@@ -5,6 +5,10 @@ A simple script to install essential tools for my works
 ## How to use
 
 ```bash
+git clone git@github.com:ducnguyen96/debian-bootstrap.git ~/config
+```
+
+```bash
 ./bootstrap.sh -h
 ```
 
