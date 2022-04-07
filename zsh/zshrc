@@ -9,6 +9,11 @@ zle_highlight=('paste:none')
 # beeping is annoying
 unsetopt BEEP
 
+# bindings
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+bindkey '^H' backward-kill-word
+
 # completions
 autoload -Uz compinit
 zstyle ':completion:*' menu select
