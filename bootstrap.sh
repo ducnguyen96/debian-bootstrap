@@ -6,6 +6,12 @@ error() {
 	exit 1
 }
 
+installWifi() {
+	wget http://ftp.hk.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-iwlwifi_20210315-3_all.deb
+	sudo dpkg -i firmware-iwlwifi_20210315-3_all.deb
+	rm -rf firmware-iwlwifi_20210315-3_all.deb
+}
+
 installGoogleChrome() {
 	printf "Installing Google Chrome \n"
 	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -150,7 +156,7 @@ Type=XSession" | sudo tee --append /usr/share/xsessions/dwm.desktop
 
 while getopts ":i:u:h" o; do case "${o}" in
 	h) printf "Optional arguments for custom use:
-	-i: install something (support: chrome, vscode, latex, ibus, zsh, git, curl, buildtools, fnm, wget, suckless, flameshot, docker, docker-compose, all )
+	-i: install something (support: chrome, vscode, latex, ibus, zsh, git, curl, buildtools, fnm, wget, suckless, flameshot, docker, docker-compose, wifi, all )
 	-u: update something (support: dwm, dwmblock, dmenu)
 	-h: Show this message\\n" && exit 1 ;;
 	i) case ${OPTARG} in "chrome")
@@ -196,6 +202,10 @@ while getopts ":i:u:h" o; do case "${o}" in
 	"suckless")
 		installSuckless
 		echo "Done install suckless"
+		break
+		;;
+	"wifi")
+		installWifi
 		break
 		;;
 	"all")
