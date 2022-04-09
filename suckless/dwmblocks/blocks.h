@@ -3,7 +3,7 @@ static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
 	{"Mem:", "free -h | awk '/^Mem/ { print $3\"/\"$2 }' | sed s/i//g", 30, 0},
 	{"Battery:", "upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | grep -o '[[:digit:]]*'%", 30, 0},
-	{"Volume:", "amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }'", 10, 0},
+	{"Volume:", "pactl list sinks | grep '^[[:space:]]Volume:' | head -n 1 | awk -F ' / ' '{print $2}'", 10, 0},
 	{"", "date '+%b %d (%a) %I:%M%p'", 5, 0}
 };
 

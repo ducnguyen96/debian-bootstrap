@@ -59,6 +59,13 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 #include "movestack.c"
 
+// pacmd set-default-sink "SINKNAME" | index to set the default output sink
+// pacmd set-default-source "SOURCENAME" | index to set the default input
+// VOLUME='+5%'
+// for SINK in `pacmd list-sinks | grep 'index:' | cut -b12-`
+// do
+//   pactl set-sink-volume $SINK $VOLUME
+// done
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -67,8 +74,10 @@ static const char *termcmd[]  = { "xfce4-terminal", NULL };
 static const char *browsercmd[] = {"google-chrome-stable", NULL};
 static const char *flameshot[] = {"flameshot", "gui", NULL};
 static const char *mutecmd[] = { "pactl", "set-sink-mute", "0", "toggle", NULL };
-static const char *volupcmd[] = { "amixer", "-q", "sset", "Master" ,"5%+", NULL };
-static const char *voldowncmd[] = { "amixer", "-q", "sset", "Master" ,"5%-", NULL };
+static const char *volupcmd[] = { "pactl", "set-sink-volume", "0", "+5%", NULL };
+static const char *voldowncmd[] = { "pactl", "set-sink-volume", "0", "-5%", NULL };
+static const char *rotateleft[] = {"xrandr", "--output", "DP-4", "--rotate", "left"};
+static const char *rotatenormal[] = {"xrandr", "--output", "DP-4", "--rotate", "normal"};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -97,6 +106,8 @@ static Key keys[] = {
 	// { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_o,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY|ShiftMask|ControlMask,	XK_l,			 spawn,					 {.v = rotateleft } },
+	{ MODKEY|ShiftMask|ControlMask,	XK_n,			 spawn,					 {.v = rotatenormal } },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },

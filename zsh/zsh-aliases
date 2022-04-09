@@ -1,1 +1,2 @@
-
+alias sr="sudo reboot"
+alias sp="sudo poweroff"
