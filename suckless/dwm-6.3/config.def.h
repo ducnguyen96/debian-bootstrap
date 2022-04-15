@@ -74,8 +74,8 @@ static const char *termcmd[]  = { "xfce4-terminal", NULL };
 static const char *browsercmd[] = {"google-chrome-stable", NULL};
 static const char *flameshot[] = {"flameshot", "gui", NULL};
 static const char *mutecmd[] = { "pactl", "set-sink-mute", "0", "toggle", NULL };
-static const char *volupcmd[] = { "pactl", "set-sink-volume", "0", "+5%", NULL };
-static const char *voldowncmd[] = { "pactl", "set-sink-volume", "0", "-5%", NULL };
+static const char *volupcmd[] = { "pactl", "set-sink-volume", "alsa_output.pci-0000_01_00.1.hdmi-stereo", "+5%", NULL };
+static const char *voldowncmd[] = { "pactl", "set-sink-volume", "alsa_output.pci-0000_01_00.1.hdmi-stereo", "-5%", NULL };
 static const char *rotateleft[] = {"xrandr", "--output", "DP-4", "--rotate", "left"};
 static const char *rotatenormal[] = {"xrandr", "--output", "DP-4", "--rotate", "normal"};
 

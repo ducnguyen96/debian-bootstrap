@@ -113,6 +113,11 @@ installDockerCompose() {
 	curl -L https://raw.githubusercontent.com/docker/compose/1.29.2/contrib/completion/zsh/_docker-compose -o $ZDOTDIR/completion/_docker-compose
 }
 
+installDbeaver() {
+	wget https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
+	sudo dpkg -i dbeaver-ce_latest_amd64.deb
+}
+
 updateDwm() {
 	cp suckless/dwm-6.3/* dwm-6.3
 	sudo cp suckless/dwm-6.3/config.def.h dwm-6.3/config.h
