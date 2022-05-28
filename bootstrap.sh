@@ -116,6 +116,7 @@ installDockerCompose() {
 installDbeaver() {
 	wget https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
 	sudo dpkg -i dbeaver-ce_latest_amd64.deb
+	rm -rf dbeaver-ce_latest_amd64.debs
 }
 
 updateDwm() {
@@ -163,6 +164,10 @@ Type=XSession" | sudo tee --append /usr/share/xsessions/dwm.desktop
 	#dwmblocks
 	git clone https://github.com/torrinfail/dwmblocks.git
 	updateDwmblock
+}
+
+installKVM() {
+	sudo apt install --no-install-recommends qemu-system libvirt-clients libvirt-daemon-system vert-manager
 }
 
 while getopts ":i:u:h" o; do case "${o}" in
@@ -219,6 +224,18 @@ while getopts ":i:u:h" o; do case "${o}" in
 		installWifi
 		break
 		;;
+	"fnm")
+		installFnm
+		break
+		;;
+	"dbeaver")
+		installDbeaver
+		break
+		;;
+	"kvm")
+		installKVMs
+		break
+		;;
 	"sound")
 		installSound
 		break
@@ -238,6 +255,8 @@ while getopts ":i:u:h" o; do case "${o}" in
 		installDockerCompose
 		installSuckless
 		installLatex
+		installKVM
+		installDbeaver
 		echo "Done"
 		break
 		;;
