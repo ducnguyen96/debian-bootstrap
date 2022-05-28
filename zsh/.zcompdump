@@ -1,4 +1,4 @@
-#files: 1105	version: 5.8
+#files: 1110	version: 5.8
 
 _comps=(
 '-' '_precommand'
@@ -160,6 +160,11 @@ _comps=(
 'caffeinate' '_caffeinate'
 'cal' '_cal'
 'calendar' '_calendar'
+'calibre' '_calibre'
+'calibredb' '_calibre'
+'calibre-debug' '_calibre'
+'calibre-server' '_calibre'
+'calibre-smtp' '_calibre'
 'cap' '_cap'
 'cask' '_cask'
 'cat' '_cat'
@@ -255,6 +260,7 @@ _comps=(
 'cu' '_cu'
 'curl' '_curl'
 'cut' '_cut'
+'cvlc' '_vlc'
 'cvs' '_cvs'
 'cvsup' '_cvsup'
 'cygcheck' '_cygcheck'
@@ -375,6 +381,11 @@ _comps=(
 'dwb' '_webbrowser'
 'e2label' '_e2label'
 'eatmydata' '_precommand'
+'ebook-convert' '_calibre'
+'ebook-edit' '_calibre'
+'ebook-meta' '_calibre'
+'ebook-polish' '_calibre'
+'ebook-viewer' '_calibre'
 'ecasound' '_ecasound'
 'ecdsautil' '_ecdsautil'
 'echotc' '_echotc'
@@ -423,6 +434,7 @@ _comps=(
 'fc-match' '_xft_fonts'
 'feh' '_feh'
 'fetch' '_fetch'
+'fetch-ebook-metadata' '_calibre'
 'fetchmail' '_fetchmail'
 'ffind' '_ffind'
 'ffmpeg' '_ffmpeg'
@@ -856,6 +868,8 @@ _comps=(
 'lpr' '_lp'
 'lprm' '_lp'
 'lpstat' '_lp'
+'lrf2lrs' '_calibre'
+'lrfviewer' '_calibre'
 'ls' '_ls'
 'lsattr' '_lsattr'
 'lsblk' '_lsblk'
@@ -882,6 +896,7 @@ _comps=(
 'lzop' '_lzop'
 'm-a' '_module-assistant'
 'mac2unix' '_dos2unix'
+'machinectl' '_machinectl'
 'madison' '_madison'
 'magnum' '_openstack'
 'mail' '_mail'
@@ -991,6 +1006,7 @@ _comps=(
 'mux' '_tmuxinator'
 'mv' '_mv'
 'mvim' '_vim'
+'mvlc' '_vlc'
 'mvn' '_mvn'
 'mvnDebug' '_mvn'
 'mx' '_hosts'
@@ -1043,6 +1059,7 @@ _comps=(
 'ntalk' '_other_accounts'
 'numfmt' '_numfmt'
 'nvim' '_vim'
+'nvlc' '_vlc'
 'nvm' '_nvm'
 'nvram' '_nvram'
 'objdump' '_objdump'
@@ -1243,6 +1260,7 @@ _comps=(
 'qtplay' '_qtplay'
 'querybts' '_bug'
 'quilt' '_quilt'
+'qvlc' '_vlc'
 'r' '_fc'
 'rails' '_rails'
 'rake' '_rake'
@@ -1337,6 +1355,7 @@ _comps=(
 'rusage' '_precommand'
 'rview' '_vim'
 'rvim' '_vim'
+'rvlc' '_vlc'
 'rwho' '_hosts'
 'rxvt' '_urxvt'
 's2p' '_sed'
@@ -1479,6 +1498,7 @@ _comps=(
 'svccfg' '_svccfg'
 'svcprop' '_svcprop'
 'svcs' '_svcs'
+'svlc' '_vlc'
 'svm' '_svm'
 'svn' '_subversion'
 'svnadmin' '_subversion'
@@ -1505,6 +1525,7 @@ _comps=(
 'systemd-inhibit' '_systemd-inhibit'
 'systemd-machine-id-setup' '_systemd'
 'systemd-notify' '_systemd'
+'systemd-nspawn' '_systemd-nspawn'
 'systemd-path' '_systemd-path'
 'systemd-resolve' '_resolvectl'
 'systemd-run' '_systemd-run'
@@ -1718,6 +1739,7 @@ _comps=(
 'virt-xml-validate' '_libvirt'
 'visudo' '_visudo'
 'vitrage' '_openstack'
+'vlc' '_vlc'
 'vmctl' '_vmctl'
 'vmstat' '_vmstat'
 'vncserver' '_vnc'
@@ -1998,12 +2020,13 @@ bindkey '^[,' _history-complete-newer
 bindkey '^[/' _history-complete-older
 bindkey '^[~' _bash_complete-word
 
-autoload -Uz _bootctl _busctl _code _curl _docker \
-            _hostnamectl _journalctl _kernel-install _localectl _loginctl \
-            _networkctl _pulseaudio _resolvectl _sd_hosts_or_user_at_host _sd_outputmodes \
-            _sd_unit_files _systemctl _systemd _systemd-analyze _systemd-delta \
-            _systemd-inhibit _systemd-path _systemd-run _systemd-tmpfiles _timedatectl \
-            _udevadm _cdr _floppy _logical_volumes _lscfg \
+autoload -Uz _bootctl _busctl _calibre _code _curl \
+            _docker _hostnamectl _journalctl _kernel-install _localectl \
+            _loginctl _machinectl _networkctl _pulseaudio _resolvectl \
+            _sd_hosts_or_user_at_host _sd_machines _sd_outputmodes _sd_unit_files _systemctl \
+            _systemd _systemd-analyze _systemd-delta _systemd-inhibit _systemd-nspawn \
+            _systemd-path _systemd-run _systemd-tmpfiles _timedatectl _udevadm \
+            _vlc _cdr _floppy _logical_volumes _lscfg \
             _lsdev _lslv _lspv _lsvg _object_classes \
             _physical_volumes _smit _volume_groups _bsdconfig _bsd_disks \
             _bsdinstall _bsd_pkg _chflags _csup _cu \
